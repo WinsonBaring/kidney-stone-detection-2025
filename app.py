@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw
 
 API_URL = "https://predict.ultralytics.com"
 API_KEY = os.getenv("ULTRALYTICS_API_KEY", "ba9e29dcecf5b19a768e56a4f616df5d03baeef036")
-MODEL_URL = "https://hub.ultralytics.com/models/H80823HRYcuMo7yTsgpx"
+MODEL_URL = "https://hub.ultralytics.com/models/eAjS72HEB8er9T7UWut0"
 
 
 def call_ultralytics_api(image_bytes: bytes):
