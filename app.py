@@ -74,12 +74,118 @@ def draw_bounding_boxes(image_bytes: bytes, detections):
 def main():
     st.set_page_config(page_title="RadAI: Kidney Stone Detection", page_icon="🩺", layout="centered")
 
-    st.markdown("## RadAI: Kidney Stone Detection 🩺")
+    # Custom dark theme styling
     st.markdown(
-        """RadAI is an AI-powered binary classification tool designed to assist in detecting kidney stones in
-        ultrasound images. The model classifies images into two categories: **Kidney Stone Detected** or
-        **Normal Kidney**. Simply upload or capture an image, and RadAI will process it and provide real-time
-        results based on the analysis."""
+        """
+        <style>
+        /* Global background and typography (light theme) */
+        .stApp {
+            background: radial-gradient(circle at top left, #f9fafb 0, #e5e7eb 45%, #d1d5db 100%);
+            color: #111827;
+        }
+
+        /* Hide default Streamlit elements for a cleaner look */
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+
+        /* Headings */
+        h1, h2, h3, h4, h5, h6 {
+            color: #111827 !important;
+            letter-spacing: 0.03em;
+        }
+
+        /* Main card container */
+        .radai-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.75rem 1.5rem;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+            border: 1px solid rgba(15, 23, 42, 0.06);
+        }
+
+        /* Subtle accent border on top */
+        .radai-card::before {
+            content: "";
+            display: block;
+            width: 72px;
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #f97316, #22c55e, #0ea5e9);
+            margin-bottom: 1.25rem;
+        }
+
+        /* Inputs and widgets */
+        .stTextInput > div > div > input,
+        .stFileUploader > div,
+        .stCheckbox > label > div:first-child,
+        .stSelectbox > div > div > select {
+            background-color: #f9fafb !important;
+            color: #111827 !important;
+            border-radius: 999px !important;
+            border: 1px solid #d1d5db !important;
+        }
+
+        .stFileUploader label,
+        .stCheckbox > label,
+        label {
+            color: #374151 !important;
+        }
+
+        /* Buttons */
+        .stButton > button {
+            background: linear-gradient(120deg, #f97316, #ea580c);
+            color: #ffffff;
+            border-radius: 999px;
+            border: none;
+            padding: 0.5rem 1.6rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.35);
+        }
+
+        .stButton > button:hover {
+            background: linear-gradient(120deg, #fb923c, #f97316);
+            box-shadow: 0 14px 28px rgba(249, 115, 22, 0.5);
+        }
+
+        /* Expanders */
+        .streamlit-expanderHeader {
+            background-color: #f3f4f6 !important;
+            color: #111827 !important;
+        }
+
+        .streamlit-expanderContent {
+            background-color: #ffffff !important;
+        }
+
+        /* Alert boxes (success, error, info) */
+        .stAlert {
+            border-radius: 16px;
+        }
+
+        /* JSON output */
+        .stJson {
+            background-color: #f9fafb !important;
+            border-radius: 12px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+        <div class="radai-card">
+            <h1>RadAI: Kidney Stone Detection 🩺</h1>
+            <p style="color:#d4d4d4; max-width: 720px; font-size: 0.98rem; line-height: 1.7;">
+            RadAI is an AI-powered binary classification tool designed to assist in detecting kidney stones in
+            ultrasound images. The model classifies images into two categories: <strong>Kidney Stone Detected</strong> or
+            <strong>Normal Kidney</strong>. Simply upload or capture an image, and RadAI will process it and provide
+            real-time results based on the analysis.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
     with st.expander("View Privacy Policy Details", expanded=True):
